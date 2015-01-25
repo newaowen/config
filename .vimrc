@@ -9,7 +9,6 @@ Plugin 'gmarik/Vundle.vim'
 " other plugins
 Plugin 'kien/ctrlp.vim'
 "Plugin 'L9'
-"Plugin 'user/L9', {'name': 'newL9'}
 " Plugin 'Lokaltog/vim-powerline' " , {'rtp': 'powerline/bindings/vim/'}
 Plugin 'bling/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
@@ -40,9 +39,11 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
+set autoindent
+set smartindent
 
 set encoding=utf-8
-set autochdir " 自动切换当前目录为当前文件所在的目录
+"set autochdir " 自动切换当前目录为当前文件所在的目录 影响cscope/ctags,取消
 set backupcopy=yes " 设置备份时的行为为覆盖
 set noswapfile
 set nobackup
@@ -82,11 +83,43 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" cscope支持
+" ctags配置 (注意';', 表示一直递归到父目录)
+set tags=tags,./vim.tags;~/
+
+" cscope配置
 if has("cscope")
-    if filereadable(".cscope.out")
-        cs add .cscope.out
+    if filereadable("cscope.out")
+        cs add cscope.out
     endif
+
+    " keymap配置
+    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>  
+    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>  
+    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>  
+    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>  
+    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>  
+    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>  
+    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>  
+    " C-@ 是Ctrl+Space, 但一般会和输入法切换冲突
+    "nmap <C-@>s :scs find s <C-R>=expand("<cword>")<CR><CR> 
+    " nmap <C-@>g :scs find g <C-R>=expand("<cword>")<CR><CR> 
+    " nmap <C-@>c :scs find c <C-R>=expand("<cword>")<CR><CR> 
+    " nmap <C-@>t :scs find t <C-R>=expand("<cword>")<CR><CR> 
+    " nmap <C-@>e :scs find e <C-R>=expand("<cword>")<CR><CR> 
+    " nmap <C-@>f :scs find f <C-R>=expand("<cfile>")<CR><CR> 
+    " nmap <C-@>i :scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>   
+    " nmap <C-@>d :scs find d <C-R>=expand("<cword>")<CR><CR> 
+
+    nmap <C-@><C-@>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>  
+    nmap <C-@><C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>    
+    nmap <C-@><C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+
 endif
 
 " NerdTree配置-如果没有指定文件，则自动打开 
