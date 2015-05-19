@@ -15,7 +15,6 @@ Plugin 'Valloric/YouCompleteMe'
 
 " minibufexploer
 " Plugin 'fholgado/minibufexpl.vim'
-
 " nerdtree
 " Plugin 'scrooloose/nerdtree'
 " nerdtree and tabs
@@ -57,31 +56,43 @@ set nowrapscan " 禁止在搜索到文件两端时重新搜索
 set noerrorbells " 关闭错误信息响铃
 set novisualbell " 关闭使用可视响铃代替呼叫
 set backspace=indent,eol,start
+set lazyredraw
 
 " leader配置 \<Space>
 let mapleader =  ","
 
-"buffer管理(不太实用)
-"需要的是能 在多个buffer中输入关键词，快速切换的插件
+"buffer管理
+"需要的是能在多个buffer中输入关键词，快速切换的插件
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
 "使用CtrlPBuffer切换(实际效果有点慢啊)
 nnoremap <C-S-B> :CtrlPBuffer<CR>
 
 " @deprecated powerline 
-set guifont=Inconsolata\ for\ Powerline:h15
-let g:Powerline_symbols = 'fancy'
-set encoding=utf-8
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
-set termencoding=utf-8
+"set guifont=Inconsolata\ for\ Powerline:h15
+"let g:Powerline_symbols = 'fancy'
+"set encoding=utf-8
+"set t_Co=256
+"set fillchars+=stl:\ ,stlnc:\
+"set term=xterm-256color
+"set termencoding=utf-8
 
 " airline配置(有这个后，基本不需要miniBufExplorer)
-" enable the list of buffers
+"默认显示airline状态栏
+set laststatus=2
+" enable the list of tab buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_theme             = 'powerlineish'
+let g:airline_enable_branch     = 1
+let g:airline_enable_syntastic  = 1
+"使用powerline fonts
+let g:airline_powerline_fonts = 1
+"trailing
+let g:airline#extensions#whitespace#trailing_format = 'tr[%s]'
+"mixed-indent太长了
+let g:airline#extensions#whitespace#mixed_indent_format = 'mi[%s]'
 
 " ctags配置 (注意';', 表示一直递归到父目录)
 set tags=tags,./vim.tags;~/
