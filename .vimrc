@@ -12,6 +12,7 @@ Plugin 'kien/ctrlp.vim'
 " Plugin 'Lokaltog/vim-powerline' " , {'rtp': 'powerline/bindings/vim/'}
 Plugin 'bling/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-fugitive'
 
 " minibufexploer
 " Plugin 'fholgado/minibufexpl.vim'
@@ -85,7 +86,7 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme             = 'powerlineish'
-let g:airline_enable_branch     = 1
+"let g:airline_enable_branch     = 1
 let g:airline_enable_syntastic  = 1
 "使用powerline fonts
 let g:airline_powerline_fonts = 1
@@ -93,6 +94,9 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#trailing_format = 'tr[%s]'
 "mixed-indent太长了
 let g:airline#extensions#whitespace#mixed_indent_format = 'mi[%s]'
+"branch
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#enabled = 1
 
 " ctags配置 (注意';', 表示一直递归到父目录)
 set tags=tags,./vim.tags;~/
@@ -104,7 +108,7 @@ if has("cscope")
     endif
 
     " keymap配置
-    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>  
+    nmap <C-\>s :cs find s <C-R>=ex pand("<cword>")<CR><CR>  
     nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>  
     nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>  
     nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>  

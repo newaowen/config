@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/aowen/myproject/java/8.8_wealth/mobilewealth/api/src/com/alipay/mobilewealth'
+let g:netrw_dirhist_2='/Users/aowen/myproject/java/8.8_wealth/mobilewealth/api/src/com/alipay/mobilewealth/biz'
+let g:netrw_dirhist_3='/Users/aowen/myproject/java/8.8_wealth/mobilewealth/api/src/com/alipay/mobilewealth/biz/service'
+let g:netrw_dirhist_4='/Users/aowen/myproject/java/8.8_wealth/mobilewealth/api/src/com/alipay/mobilewealth/biz/service/gw'
+let g:netrw_dirhist_5='/Users/aowen/myproject/java/8.8_wealth/mobilewealth/api/src/com/alipay/mobilewealth/biz/service/gw/api'
+let g:netrw_dirhist_6='/Users/aowen/myproject/java/8.8_wealth/mobilewealth/api/src/com/alipay/mobilewealth/biz/service/gw/api/account'
+let g:netrw_dirhist_7='/Users/aowen/myproject/script-conf'
